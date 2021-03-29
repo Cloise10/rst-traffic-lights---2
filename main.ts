@@ -88,7 +88,7 @@ input.onButtonPressed(Button.B, function () {
         basic.pause(5000)
     }
 })
-// shake to reset each program
+// shake to reset each program or to stop a program
 input.onGesture(Gesture.Shake, function () {
     control.reset()
 })
