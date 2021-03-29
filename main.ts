@@ -27,6 +27,9 @@ input.onButtonPressed(Button.A, function () {
         basic.pause(5000)
     }
 })
+// when button A+B is pressed, a blinking red light with a large-to-small "X" sign to represent a stop sign at an intersection
+// 
+// when button A+B is pressed again, a blinking yellow light with a large-to-small diamond to represent caution or slow down at an intersection
 input.onButtonPressed(Button.AB, function () {
     blink += 1
     if (blink == 1) {
@@ -70,8 +73,8 @@ input.onButtonPressed(Button.B, function () {
         pins.digitalWritePin(DigitalPin.P2, 0)
         pins.digitalWritePin(DigitalPin.P0, 1)
         basic.pause(2000)
-        for (let index = 0; index <= 15; index++) {
-            basic.showNumber(15 - index)
+        for (let index3 = 0; index3 <= 15; index3++) {
+            basic.showNumber(15 - index3)
             basic.pause(1000)
             basic.clearScreen()
         }
@@ -85,8 +88,10 @@ input.onButtonPressed(Button.B, function () {
         basic.pause(5000)
     }
 })
+// shake to reset each program
 input.onGesture(Gesture.Shake, function () {
     control.reset()
 })
+// sets the variable "blink" (used for button A+B) to 0
 let blink = 0
 blink = 0
