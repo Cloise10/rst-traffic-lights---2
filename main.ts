@@ -2,7 +2,7 @@
 // P1 - Yellow
 // P2 - Red
 // 
-// when button A is pressed, 
+// when button A is pressed, the sequence green-yellow-red is shown with the additional left arrow after a few seconds when the green light is on and an "x" sign to represent "do not walk" during a red light
 input.onButtonPressed(Button.A, function () {
     while (true) {
         basic.clearScreen()
@@ -24,13 +24,13 @@ input.onButtonPressed(Button.A, function () {
         pins.digitalWritePin(DigitalPin.P2, 1)
         pins.digitalWritePin(DigitalPin.P1, 0)
         basic.showIcon(IconNames.No)
-        basic.pause(1000)
+        basic.pause(5000)
     }
 })
 input.onButtonPressed(Button.AB, function () {
     blink += 1
     if (blink == 1) {
-        for (let index = 0; index < 7; index++) {
+        for (let index = 0; index < 10; index++) {
             pins.digitalWritePin(DigitalPin.P2, 1)
             basic.showIcon(IconNames.No)
             basic.pause(100)
@@ -46,7 +46,7 @@ input.onButtonPressed(Button.AB, function () {
         }
         basic.clearScreen()
     } else if (blink == 2) {
-        for (let index = 0; index < 7; index++) {
+        for (let index = 0; index < 10; index++) {
             pins.digitalWritePin(DigitalPin.P1, 1)
             basic.showIcon(IconNames.Diamond)
             basic.pause(100)
@@ -59,14 +59,20 @@ input.onButtonPressed(Button.AB, function () {
         blink = 0
     }
 })
+// P0 - Green
+// P1 - Yellow
+// P2 - Red
+// 
+// when button B is pressed, the sequence green-yellow-red is shown with a countdown of 15 seconds during a green light and an "x" sign to represent "do not walk" during a red light
 input.onButtonPressed(Button.B, function () {
     while (true) {
+        basic.clearScreen()
         pins.digitalWritePin(DigitalPin.P2, 0)
         pins.digitalWritePin(DigitalPin.P0, 1)
         basic.pause(2000)
         for (let index = 0; index <= 15; index++) {
             basic.showNumber(15 - index)
-            basic.pause(200)
+            basic.pause(1000)
             basic.clearScreen()
         }
         basic.pause(2000)
@@ -75,7 +81,8 @@ input.onButtonPressed(Button.B, function () {
         basic.pause(2000)
         pins.digitalWritePin(DigitalPin.P2, 1)
         pins.digitalWritePin(DigitalPin.P1, 0)
-        basic.pause(1000)
+        basic.showIcon(IconNames.No)
+        basic.pause(5000)
     }
 })
 input.onGesture(Gesture.Shake, function () {
